@@ -1,5 +1,5 @@
 services:
-  # Backend API Service
+  # Backend API Service on Render
   - type: web
     name: queue-system-api
     runtime: node
@@ -30,15 +30,3 @@ services:
         value: Queue System <noreply@render-app.com>
       - key: FRONTEND_URL
         sync: false
-
-  # Frontend Service
-  - type: web
-    name: queue-system-frontend
-    runtime: static
-    plan: free
-    buildCommand: cd frontend/vite-project && npm install && npm run build
-    publishPath: frontend/vite-project/dist
-    autoDeploy: true
-    envVars:
-      - key: VITE_API_URL
-        value: https://queue-system-api.onrender.com
